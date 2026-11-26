@@ -1,0 +1,280 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Phu Quoc 2026</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+/* Layout: hartă schematică a insulei sus, apoi un plan pe zile, colorat pe zone; opțiuni alternative în grilă dedesubt */
+:root{
+  --bg:#F2F6F7; --surface:#FFFFFF; --ink:#12263A; --muted:#55687A; --line:#D6E0E5;
+  --west:#0E7C86; --north:#B8691E; --south:#2F5FBF; --rest:#5B8A35; --sea:#DCEBF0; --land:#EAE3D2; --land-line:#BDB294;
+  --f-head:'Space Grotesk',system-ui,sans-serif; --f-body:'Inter',system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1A24; --surface:#16273A; --ink:#E6EEF3; --muted:#9FB2C1; --line:#27405A;
+  --west:#4FC3CC; --north:#E9A25B; --south:#7FA3F2; --rest:#97C46B; --sea:#12283A; --land:#33392E; --land-line:#56604A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1A24; --surface:#16273A; --ink:#E6EEF3; --muted:#9FB2C1; --line:#27405A;
+  --west:#4FC3CC; --north:#E9A25B; --south:#7FA3F2; --rest:#97C46B; --sea:#12283A; --land:#33392E; --land-line:#56604A; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
+.wrap{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:var(--f-head);margin:0;text-wrap:balance;line-height:1.15}
+h1{font-size:clamp(28px,6vw,44px);letter-spacing:-.01em}
+h2{font-size:22px}
+h3{font-size:17px}
+p{margin:0}
+.sub{color:var(--muted);margin-top:6px}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 10px;font-size:13px}
+.fact b{font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:10px 16px;font-size:13px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.mapbox{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:20px;align-items:start}
+.map{background:var(--sea);border:1px solid var(--line);border-radius:10px;padding:8px}
+.map svg{width:100%;height:auto;display:block}
+.note{font-size:12px;color:var(--muted);margin-top:6px}
+.pin{cursor:pointer}
+.pin circle{stroke:var(--surface);stroke-width:2;transition:r .15s}
+.pin text{font-family:var(--f-body);font-size:11.5px;fill:var(--ink);font-weight:500;paint-order:stroke;stroke:var(--land);stroke-width:3px}
+.pin.dim{opacity:.25}
+.zones{display:flex;flex-direction:column;gap:10px}
+.zone{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--c);border-radius:8px;padding:12px 14px}
+.zone h3{color:var(--c);font-size:16px}
+.zone p{color:var(--muted);font-size:14px;margin-top:4px}
+.days{display:flex;flex-direction:column;gap:12px}
+.day{background:var(--surface);border:1px solid var(--line);border-radius:10px;display:grid;grid-template-columns:96px minmax(0,1fr);overflow:hidden;cursor:pointer;transition:box-shadow .15s}
+.day:hover,.day:focus-visible{box-shadow:0 2px 12px rgba(0,0,0,.14);outline:none}
+.day:focus-visible{outline:2px solid var(--c);outline-offset:2px}
+.when{background:var(--c);color:#fff;padding:12px 10px;display:flex;flex-direction:column;justify-content:center;gap:2px}
+.when .d{font-family:var(--f-head);font-weight:700;font-size:26px;line-height:1}
+.when .w{font-size:12px;letter-spacing:.06em;text-transform:uppercase;opacity:.92}
+.body{padding:12px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.body h3{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline}
+.tag{font-family:var(--f-body);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--c)}
+.steps{margin:0;padding-left:18px;color:var(--ink)}
+.steps li{margin:2px 0}
+.alt{font-size:13.5px;color:var(--muted);border-top:1px dashed var(--line);padding-top:8px}
+.alt b{color:var(--ink);font-weight:600}
+.day.dim{opacity:.45}
+.options{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.opt{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.opt h3{font-size:15px}
+.opt p{font-size:13.5px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.chip{font-size:11.5px;border:1px solid var(--line);border-radius:999px;padding:1px 9px;color:var(--muted)}
+.tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.tip{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.tip h3{font-size:15px;margin-bottom:4px}
+.tip ul{margin:0;padding-left:18px;font-size:14px}
+.warn{font-size:13.5px;border:1px solid var(--north);border-radius:8px;padding:10px 14px;background:var(--surface)}
+.btn{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:4px 12px;border-radius:999px;cursor:pointer}
+.btn:focus-visible{outline:2px solid var(--west);outline-offset:2px}
+.rowh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px}
+@media (max-width:760px){.mapbox{grid-template-columns:minmax(0,1fr)}.day{grid-template-columns:72px minmax(0,1fr)}.when .d{font-size:22px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+<header>
+  <h1>Phu Quoc, 28 noiembrie – 5 decembrie</h1>
+  <p class="sub">Gabriel și Gabriela. 7 nopți la Best Western Premier Sonasea, 6 zile întregi plus sosirea de sâmbătă dimineață.</p>
+  <div class="facts">
+    <span class="fact"><b>Dus</b> LO 6567, vineri 27.11, 16:15 → 06:50</span>
+    <span class="fact"><b>Retur</b> LO 6568, sâmbătă 5.12, 08:50 → 15:35</span>
+    <span class="fact"><b>Vreme</b> prognoză 24–33 °C, ploi probabile 28–29 nov și 2–3 dec</span>
+    <span class="fact"><b>Fus orar</b> +5 ore față de România</span>
+  </div>
+</header>
+
+<section>
+  <div class="rowh"><h2>Insula pe zone</h2><button class="btn" id="reset" type="button">Arată toate zilele</button></div>
+  <p class="sub">Atingeți o zi ca să vedeți unde se duce pe hartă. Schema nu e la scară și nici poziția hotelului nu e confirmată.</p>
+  <div class="mapbox" style="margin-top:14px">
+    <div>
+      <div class="map">
+        <svg viewBox="0 0 320 420" role="img" aria-label="Schema insulei Phu Quoc cu zonele nord, vest și sud">
+          <path d="M70 40 C120 18 205 22 238 58 C262 90 240 130 232 170 C226 215 236 250 258 288 C280 328 292 360 262 384 C232 408 190 400 168 372 C140 340 124 300 108 262 C94 228 66 190 58 150 C48 108 40 66 70 40 Z" fill="var(--land)" stroke="var(--land-line)" stroke-width="1.5"/>
+          <!-- isole sud -->
+          <circle cx="210" cy="402" r="5" fill="var(--land)" stroke="var(--land-line)"/>
+          <circle cx="232" cy="410" r="4" fill="var(--land)" stroke="var(--land-line)"/>
+          <circle cx="184" cy="410" r="3.5" fill="var(--land)" stroke="var(--land-line)"/>
+          <g class="pin" data-z="north" data-d="1"><circle cx="86" cy="70" r="8" fill="var(--north)"/><text x="100" y="62">Gành Dầu</text></g>
+          <g class="pin" data-z="north" data-d="1"><circle cx="82" cy="104" r="8" fill="var(--north)"/><text x="96" y="100">Grand World · VinWonders · Safari</text></g>
+          <g class="pin" data-z="north" data-d="1"><circle cx="150" cy="78" r="7" fill="var(--north)"/><text x="162" y="82">Parc național</text></g>
+          <g class="pin" data-z="west" data-d="0,2,3"><circle cx="82" cy="180" r="9" fill="var(--west)"/><text x="96" y="176">Duong Dong · piața de noapte</text></g>
+          <g class="pin" data-z="west" data-d="0,2,3"><circle cx="82" cy="206" r="9" fill="var(--west)"/><text x="96" y="212">Hotel (zona Long Beach, de confirmat)</text></g>
+          <g class="pin" data-z="rest" data-d="4"><circle cx="86" cy="146" r="7" fill="var(--rest)"/><text x="98" y="140">Ong Lang</text></g>
+          <g class="pin" data-z="west" data-d="0"><circle cx="86" cy="248" r="6" fill="var(--west)"/><text x="98" y="256">Aeroport</text></g>
+          <g class="pin" data-z="south" data-d="3,5"><circle cx="142" cy="352" r="9" fill="var(--south)"/><text x="30" y="372">Sunset Town</text></g>
+          <g class="pin" data-z="south" data-d="3"><circle cx="198" cy="388" r="9" fill="var(--south)"/><text x="130" y="418">Telecabina Hòn Thơm</text></g>
+          <g class="pin" data-z="south" data-d="3"><circle cx="226" cy="396" r="7" fill="var(--south)"/><text x="244" y="392">An Thới</text></g>
+          <g class="pin" data-z="south" data-d="5"><circle cx="262" cy="340" r="9" fill="var(--south)"/><text x="204" y="330">Sao Beach</text></g>
+          <g class="pin" data-z="south" data-d="5"><circle cx="230" cy="324" r="6" fill="var(--south)"/><text x="196" y="314">Închisoarea</text></g>
+        </svg>
+      </div>
+      <p class="note">Nord sus, mare la stânga (coasta de vest). Telecabina și insulele An Thới sunt în sudul extrem.</p>
+    </div>
+    <div class="zones">
+      <div class="zone" style="--c:var(--west)"><h3>Vest · Duong Dong și Long Beach</h3><p>Baza voastră. Piața de noapte, fermele, apusurile. Totul aproape de hotel.</p></div>
+      <div class="zone" style="--c:var(--north)"><h3>Nord</h3><p>Grand World, VinWonders, Safari, parc național, Gành Dầu. O zi întreagă, cu mașină și șofer.</p></div>
+      <div class="zone" style="--c:var(--south)"><h3>Sud</h3><p>Insule, snorkeling, telecabină, Sunset Town, Sao Beach. Cea mai lungă deplasare, dar cele mai multe locuri frumoase.</p></div>
+      <div class="zone" style="--c:var(--rest)"><h3>Zi liberă</h3><p>Plajă, piscină, masaj, citit. Ziua de rezervă dacă vremea strică ceva.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Planul recomandat</h2>
+  <p class="sub">Un singur loc mare pe zi, ca să nu petreceți vacanța în mașină. Fiecare zi are o variantă dacă vreți altceva.</p>
+  <div class="days" style="margin-top:14px" id="days">
+
+    <div class="day" tabindex="0" data-i="0" style="--c:var(--west)">
+      <div class="when"><span class="d">28</span><span class="w">sâm · nov</span></div>
+      <div class="body">
+        <h3>Sosire și prima seară <span class="tag">Vest</span></h3>
+        <ul class="steps">
+          <li>Aterizare 06:50, control pașapoarte, transfer cu reprezentantul Paralela 45.</li>
+          <li>La hotel: mic dejun, bagaje la recepție, early check-in dacă se poate. Camera vine de obicei de la 14:00.</li>
+          <li>Plajă sau piscină ușor, somn după-amiază. Seara piața de noapte Duong Dong.</li>
+          <li>Prognoza dă 75% șanse de furtună, deci rămâneți aproape de hotel și mergeți la piață doar dacă s-a oprit ploaia.</li>
+        </ul>
+        <p class="alt"><b>Variantă:</b> masaj după zbor și cină la hotel dacă sunteți prea obosiți pentru piață.</p>
+      </div>
+    </div>
+
+    <div class="day" tabindex="0" data-i="1" style="--c:var(--west)">
+      <div class="when"><span class="d">29</span><span class="w">dum · nov</span></div>
+      <div class="body">
+        <h3>Orașul și apusul <span class="tag">Vest · furtuni 55%</span></h3>
+        <ul class="steps">
+          <li>Dimineața: fabrică de sos de pește și fermă de piper.</li>
+          <li>După-amiaza: plajă, apoi apus de soare pe coasta de vest.</li>
+        </ul>
+        <p class="alt"><b>Variantă:</b> o vizită la o fermă de perle, dacă vreți ceva în plus.</p>
+      </div>
+    </div>
+
+    <div class="day" tabindex="0" data-i="2" style="--c:var(--north)">
+      <div class="when"><span class="d">30</span><span class="w">lun · nov</span></div>
+      <div class="body">
+        <h3>Nordul <span class="tag">Zi întreagă · ploaie 15%</span></h3>
+        <ul class="steps">
+          <li>Dimineața: Gành Dầu și o plimbare scurtă în parcul național, sau VinWonders.</li>
+          <li>Seara: Grand World și spectacolul „The Charm of Venice".</li>
+        </ul>
+        <p class="alt"><b>Variantă:</b> ziua în Vinpearl Safari, apoi Grand World seara. Biletele de parc sunt scumpe, deci alegeți unul singur.</p>
+      </div>
+    </div>
+
+    <div class="day" tabindex="0" data-i="3" style="--c:var(--south)">
+      <div class="when"><span class="d">1</span><span class="w">mar · dec</span></div>
+      <div class="body">
+        <h3>Insulele din sud <span class="tag">Prognoză: senin, cea mai bună zi</span></h3>
+        <ul class="steps">
+          <li>Telecabina Hòn Thơm, apoi tură cu barca și snorkeling la insulele An Thới.</li>
+          <li>Seara: Sunset Town.</li>
+        </ul>
+        <p class="alt"><b>Variantă:</b> dacă barca se anulează, mutați ziua pe 4 dec și faceți acum plajă. Ziua e seninul din prognoză, deci rezervați tura din timp. Pentru scuba, vedeți mai jos: nu e acoperită de asigurarea de la cardul BT.</p>
+      </div>
+    </div>
+
+    <div class="day" tabindex="0" data-i="4" style="--c:var(--rest)">
+      <div class="when"><span class="d">2</span><span class="w">mie · dec</span></div>
+      <div class="body">
+        <h3>Zi liberă <span class="tag">Ploaie 55%, flexibil</span></h3>
+        <ul class="steps">
+          <li>Long Beach sau Ong Lang, piscină, masaj. Prânz lung, apus.</li>
+        </ul>
+        <p class="alt"><b>Variantă:</b> închiriați un șofer pentru jumătate de zi și alegeți din mers ce vă ispitește.</p>
+      </div>
+    </div>
+
+    <div class="day" tabindex="0" data-i="5" style="--c:var(--rest)">
+      <div class="when"><span class="d">3</span><span class="w">joi · dec</span></div>
+      <div class="body">
+        <h3>Zi de ploaie, la adăpost <span class="tag">Prognoză: ploaie 55%</span></h3>
+        <ul class="steps">
+          <li>Masaj sau spa, prânz lung, cumpărături: sos de pește, piper, suveniruri.</li>
+          <li>Dacă se luminează, plimbare prin Duong Dong sau piscina hotelului.</li>
+        </ul>
+        <p class="alt"><b>Variantă:</b> muzeu sau cafenea în oraș, apoi piața de noapte dacă s-a oprit ploaia.</p>
+      </div>
+    </div>
+
+    <div class="day" tabindex="0" data-i="6" style="--c:var(--south)">
+      <div class="when"><span class="d">4</span><span class="w">vin · dec</span></div>
+      <div class="body">
+        <h3>Sao Beach, înainte de plecare <span class="tag">Prognoză: ploaie 20%</span></h3>
+        <ul class="steps">
+          <li>Sao Beach dimineața, una dintre cele mai frumoase plaje ale insulei. Ziua a doua cea mai uscată după 1 decembrie.</li>
+          <li>Reveniți la hotel după-amiaza și împachetați. După ora 17:00 vă anunță recepția ora plecării. Cereți micul dejun la pachet.</li>
+        </ul>
+        <p class="alt"><b>Variantă:</b> dacă vreți și închisoarea Phu Quoc (aproximativ o oră), ea poate fi pe 1 dec după telecabină. Dacă plouă pe 4 dec, mergeți pe Sao Beach pe 2 dec.</p>
+      </div>
+    </div>
+
+    <div class="day" tabindex="0" data-i="7" style="--c:var(--rest)">
+      <div class="when"><span class="d">5</span><span class="w">sâm · dec</span></div>
+      <div class="body">
+        <h3>Plecarea <span class="tag">Dimineață devreme</span></h3>
+        <ul class="steps">
+          <li>Plecare din hotel în jur de 05:00–06:00, zbor 08:50, aterizare la Otopeni 15:35.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Alte opțiuni</h2>
+  <p class="sub">Dacă vreți altceva decât planul. Prețurile nu le-am găsit sigure, deci cereți-le la hotel sau la reprezentantul Paralela 45.</p>
+  <div class="options" style="margin-top:14px">
+    <div class="opt"><h3>Tur cu barca „4 insule"</h3><p>Snorkeling, plajă pe insule mici, prânz pe barcă. Cea mai populară excursie.</p><div class="chips"><span class="chip">Depinde de vreme</span><span class="chip">Sud</span></div></div>
+    <div class="opt"><h3>Telecabina Hòn Thơm</h3><p>Una dintre cele mai lungi telecabine peste mare, cu priveliște spre insule.</p><div class="chips"><span class="chip">Sud</span><span class="chip">Scump</span></div></div>
+    <div class="opt"><h3>Vinpearl Safari</h3><p>Safari-parc cu animale din întreaga lume, bun pentru o zi relaxată.</p><div class="chips"><span class="chip">Nord</span><span class="chip">Scump</span></div></div>
+    <div class="opt"><h3>VinWonders</h3><p>Parc de distracții cu tobogane și spectacole, pentru o zi plină.</p><div class="chips"><span class="chip">Nord</span><span class="chip">Scump</span></div></div>
+    <div class="opt"><h3>Grand World seara</h3><p>Orășel de inspirație venețiană cu spectacolul „The Charm of Venice".</p><div class="chips"><span class="chip">Nord</span><span class="chip">Seara</span></div></div>
+    <div class="opt"><h3>Piața de noapte</h3><p>Mâncare locală, fructe de mare, suveniruri. Stabiliți greutatea și prețul înainte să gătească.</p><div class="chips"><span class="chip">Vest</span><span class="chip">Ieftin</span></div></div>
+    <div class="opt"><h3>Fermă de piper și sos de pește</h3><p>Producători locali, ușor de combinat cu o zi lejeră în Duong Dong.</p><div class="chips"><span class="chip">Vest</span><span class="chip">Ieftin</span></div></div>
+    <div class="opt"><h3>Scufundări</h3><p>Apă limpede în decembrie. Atenție: asigurarea Groupama de la card exclude scufundările.</p><div class="chips"><span class="chip">Sud</span><span class="chip">Verificați asigurarea</span></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>De ținut minte</h2>
+  <div class="tips" style="margin-top:14px">
+    <div class="tip"><h3>Transport</h3><ul><li>Taxi sau aplicație pentru drumuri scurte.</li><li>Mașină cu șofer pentru zilele de nord și sud.</li><li>Scuter doar cu permis valabil și asigurare care îl acoperă.</li></ul></div>
+    <div class="tip"><h3>Bani</h3><ul><li>Cash USD sau EUR de schimbat.</li><li>Bancnote mici pentru piață și ferme.</li><li>Cardurile merg doar în locurile mari.</li></ul></div>
+    <div class="tip"><h3>Sănătate</h3><ul><li>Repelent, cremă solară, apă îmbuteliată.</li><li>Veste de salvare pe barcă și fără atins corali.</li><li>Salvați numărul de asistență al asigurării în telefon.</li></ul></div>
+    <div class="tip"><h3>Numere</h3><ul><li>Urgențe Paralela 45: +40 374 106 406</li><li>Daniel Koteles: +40 744 355 796</li><li>Alexandru Florea: +40 744 378 622</li></ul></div>
+  </div>
+  <p class="warn" style="margin-top:14px">Prognoza (din 26 nov) e doar o estimare și poate să se schimbe. Pentru 5 decembrie nu avem încă prognoză. Verificați din nou înainte de plecare. Orele de zbor pot fi modificate. Verificați cu 1–2 zile înainte și prezentați-vă la Otopeni cu cel puțin 3 ore înainte de plecare, pe 27 noiembrie.</p>
+</section>
+</div>
+
+<script>
+(function(){
+  var days=[].slice.call(document.querySelectorAll('.day'));
+  var pins=[].slice.call(document.querySelectorAll('.pin'));
+  // fiecare ghid de pe hartă are zilele lui; un pin cu data-d="0,2,3" aparține zilelor 0, 2 și 3
+  var map={0:[0],1:[1],2:[2],3:[3],4:[4],5:[5],6:[6],7:[7]};
+  function show(i){
+    days.forEach(function(d){d.classList.toggle('dim',i!==null&&+d.dataset.i!==i)});
+    pins.forEach(function(p){
+      var ids=p.dataset.d.split(',').map(Number);
+      // zilele 0..7 din plan se potrivesc cu zonele: 0,1 vest; 2 nord; 3,5 sud; 4,6,7 liber
+      var zones={0:'west',1:'west',2:'north',3:'south',4:'rest',5:'rest',6:'south',7:'rest'};
+      p.classList.toggle('dim',i!==null && p.dataset.z!==zones[i]);
+    });
+  }
+  days.forEach(function(d){
+    d.addEventListener('click',function(){show(+d.dataset.i)});
+    d.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();show(+d.dataset.i)}});
+  });
+  document.getElementById('reset').addEventListener('click',function(){show(null)});
+})();
+</script>
+
+</body></html>
